@@ -66,16 +66,16 @@ Application can be setup by
 
 ## Run Application
 
-* Using run_api.sh
-  Make sure that application is setup correctly
+* Using run_api.sh  
+  Make sure that application is setup correctly  
 
-  Once in gene_suggest_api directory on shell prompt type  
+  From  **gene_suggest_api** directory on shell prompt type  
 
   To run application at default port 5000  
-  $/home/GSA/gene_suggest_api# `./run_api.sh`         // This will run application on default port 5000
+  `./run_api.sh`                    
 
   To run application at specific port let's say 8000  
-  $/home/GSA/gene_suggest_api# `./run_api.sh 8000`    // This will run application on default port 8000
+  `./run_api.sh 8000`               
 
 * Manually  
   * Activate virtualenv  
@@ -86,31 +86,36 @@ Application can be setup by
   `python run.py 8000`  	// Runs applicataion on default port 8000  
 
 ## Testing
-As per the specification in API.md document 
+Refere API.md for API Specifications
+* Run tests automatically  
+	  Go to gene_suggest directory and run the tests  
+	  `cd gene_suggest`      	  
+	  `python test_gene_suggest.py`  
 
-Once the application is running. 
-Ensure to use correct port number
+* Run tests manually using curl
+	Once the application is running. 
+	Ensure to use correct port number
 
-* Valid Request : Get at most 10 gene names starting with BR for homo_sapiens species  
-`curl 'http://localhost:5000/gene_suggest?query=BR&species=homo_sapiens&limit=10' -X GET -Haccept:text/json`
+	* Valid Request : Get at most 10 gene names starting with BR for homo_sapiens species  
+	`curl 'http://localhost:5000/gene_suggest?query=BR&species=homo_sapiens&limit=10' -X GET -Haccept:text/json`
 
-* Valid Request : Get at most 10 gene names starting with LAM for homo_sapiens species  
-`curl 'http://localhost:5000/gene_suggest?query=LAM&species=homo_sapiens&limit=10' -X GET -Haccept:text/json`
+	* Valid Request : Get at most 10 gene names starting with LAM for homo_sapiens species  
+	`curl 'http://localhost:5000/gene_suggest?query=LAM&species=homo_sapiens&limit=10' -X GET -Haccept:text/json`
 
-* Missing query  
-`curl 'http://localhost:5000/gene_suggest?species=homo_sapiens&limit=10' -X GET -Haccept:text/json`
+	* Missing query  
+	`curl 'http://localhost:5000/gene_suggest?species=homo_sapiens&limit=10' -X GET -Haccept:text/json`
 
-* Missing species  
-`curl 'http://localhost:5000/gene_suggest?query=LAM&limit=10' -X GET -Haccept:text/json`
+	* Missing species  
+	`curl 'http://localhost:5000/gene_suggest?query=LAM&limit=10' -X GET -Haccept:text/json`
 
-* Missing query and species both  
-`curl 'http://localhost:5000/gene_suggest?limit=10' -X GET -Haccept:text/json`
+	* Missing query and species both  
+	`curl 'http://localhost:5000/gene_suggest?limit=10' -X GET -Haccept:text/json`
 
-* POST Method not allowed  
-`curl 'http://localhost:5000/gene_suggest?query=BR&species=homo_sapiens&limit=10' -X POST -Haccept:text/json`
-	
-* PUT Method not allowed  
-`curl 'http://localhost:5000/gene_suggest?query=BR&species=homo_sapiens&limit=10' -X PUT -Haccept:text/json`
-	
-* DELETE Method not allowed  
-`curl 'http://localhost:5000/gene_suggest?query=BR&species=homo_sapiens&limit=10' -X DELETE -Haccept:text/json`
+	* POST Method not allowed  
+	`curl 'http://localhost:5000/gene_suggest?query=BR&species=homo_sapiens&limit=10' -X POST -Haccept:text/json`
+		
+	* PUT Method not allowed  
+	`curl 'http://localhost:5000/gene_suggest?query=BR&species=homo_sapiens&limit=10' -X PUT -Haccept:text/json`
+		
+	* DELETE Method not allowed  
+	`curl 'http://localhost:5000/gene_suggest?query=BR&species=homo_sapiens&limit=10' -X DELETE -Haccept:text/json`
